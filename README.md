@@ -10,5 +10,5 @@ sklearn
 grakel
 ```
 
-`homlib` can be obtained from (https://github.com/spaghetti-source/homlib)[here]. All other libs are rather standard and part of anaconda and pypy etc.
+`homlib` can be obtained from [here](https://github.com/spaghetti-source/homlib). All other libs are rather standard and part of anaconda and pypy etc.
 
