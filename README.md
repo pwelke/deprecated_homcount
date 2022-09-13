@@ -59,7 +59,7 @@ pip install -r requirements_dev.txt
 
 # Compute Embeddings
 
-- Download data from `TODO`.
+- Download data from [here](https://drive.google.com/file/d/15w7UyqG_MjCqdRL2fA87m7-vanjddKNh/view?usp=sharing) and unzip it into `graph-homomorphism-network/data`.
 - set the parameter in `DISC/disc_local.properties` according to the number of cores of your machine
 - run (in the virtual environment)
 ```
