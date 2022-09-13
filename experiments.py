@@ -6,11 +6,11 @@ import os
 # parameters to iterate over
 cwd = './'
 
-datasets = ['REDDIT-BINARY', 'IMDBBINARY', 'PAULUS25', 'CSL', 'NCI1']
+datasets = ['MUTAG', 'ZINC']
 
 executables = ['graph-homomorphism-network/models/feature_extraction.py', ] #'graph-homomorphism-network/models/mlp.py', 'graph-homomorphism-network/models/svm.py']
 
-run_ids = ['kdml02a', 'kdml02b', 'kdml02c']
+run_ids = ['wien1', 'wien2', 'wien3']
 
 pattern_counts = [50, ] #10, 50, 100, 200]
 
