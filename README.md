@@ -27,8 +27,8 @@ sudo update-alternatives --config javac
 
 1) Clone this repository somewhere
 2) Enter the repository.
-    c) Clone github.com/pwelke/graph-homomorphism-network.git
-    a) Clone github.com/maksim96/DISC.git
+    1) Clone github.com/pwelke/graph-homomorphism-network.git
+    2) Clone github.com/maksim96/DISC.git
 
 
 ## Building Scala Part
