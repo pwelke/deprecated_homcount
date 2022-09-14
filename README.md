@@ -4,7 +4,7 @@
 Ensure that you have java installed, use java8 (!) and have scala and sbt installed.
 
 ```
-apt-get install openjdk8-headless
+apt-get install openjdk-8-jdk-headless
 apt-get install scala
 ```
 
