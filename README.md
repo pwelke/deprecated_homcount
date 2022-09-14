@@ -33,7 +33,10 @@ sudo update-alternatives --config javac
 
 ## Building Scala Part
 
-To compile the scala part (DISC), run
+To compile the scala part (DISC), enter the `DISC` folder and run
+```sbt compile```
+This may take some time, as `sbt` will likely download lots of dependencies.
+
 
 ## Python Setup
 
