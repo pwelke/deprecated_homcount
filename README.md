@@ -2,13 +2,21 @@
 
 ## System Setup
 Ensure that you have python installed, cmake, and a recent c++ compiler available.
+Currently, java is also a dependency, but it is superfluous.
 
 ## Clone Repos
 
 1) Clone this repository somewhere
 2) Enter the repository.
-    3) Clone github.com/pwelke/HomSub.git
-    1) Clone github.com/pwelke/graph-homomorphism-network.git
+    1) Clone github.com/pwelke/HomSub.git
+    2) Clone github.com/pwelke/graph-homomorphism-network.git
+
+```
+git clone git@github.com:pwelke/homcount.git
+cd homcount
+git clone git@github.com:pwelke/HomSub.git
+git clone git@github.com:pwelke/graph-homomorphism-network.git
+```
 
 
 ## Building Scala Part
