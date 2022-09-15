@@ -7,8 +7,8 @@ Ensure that you have java installed, cmake, and a recent c++ compiler available.
 
 1) Clone this repository somewhere
 2) Enter the repository.
-    1) Clone github.com/pwelke/graph-homomorphism-network.git
     3) Clone github.com/pwelke/HomSub.git
+    1) Clone github.com/pwelke/graph-homomorphism-network.git
 
 
 ## Building Scala Part
@@ -16,6 +16,8 @@ Ensure that you have java installed, cmake, and a recent c++ compiler available.
 To compile c++ part, enter the `HomSub` and compile the code
 ```
 cd HomSub
+git submodule init
+git submodule update
 sh build-third-party.sh
 sh build.sh
 ```
