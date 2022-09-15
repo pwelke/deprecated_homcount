@@ -2,6 +2,7 @@
 
 ## System Setup
 Ensure that you have python installed, cmake, and a recent c++ compiler available.
+Currently, java is also a dependency, but it is superfluous.
 
 ## Clone Repos
 
