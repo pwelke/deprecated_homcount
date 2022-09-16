@@ -6,11 +6,11 @@ import os
 # parameters to iterate over
 cwd = './'
 
-datasets = [ 'MUTAG', 'CSL', 'PAULUS25', 'BZR'] 
+datasets = [ 'MUTAG', 'CSL', 'PAULUS25', 'BZR', 'IMDBBINARY', 'IMDBMULTI'] 
 
 executables = ['graph-homomorphism-network/models/svm.py', 'graph-homomorphism-network/models/mlp.py']
 
-run_ids = ['iailab3']
+run_ids = ['run1','run2','run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
 
 pattern_counts = [30, ] #10, 50, 100, 200]
 
