@@ -6,11 +6,11 @@ import os
 # parameters to iterate over
 cwd = './'
 
-datasets = ['MUTAG', 'CSL', 'PAULUS25', 'BZR']
+datasets = ['MUTAG', 'CSL', 'PAULUS25', 'BZR', 'IMDBBINARY', 'IMDBMULTI', 'REDDIT-BINARY', 'NCI1', 'ENZYMES', 'DD', 'COLLAB']
 
 executables = ['graph-homomorphism-network/models/feature_extraction.py', ] #'graph-homomorphism-network/models/mlp.py', 'graph-homomorphism-network/models/svm.py']
 
-run_ids = run_ids = ['run1','run2','run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
+run_ids = ['run1','run2','run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
 
 pattern_counts = [30, ] #10, 50, 100, 200]
 
@@ -18,7 +18,7 @@ hom_types = ['random_ktree']
 
 
 for run_id, dataset, executable, pattern_count, hom_type in itertools.product(run_ids, datasets, executables, pattern_counts, hom_types):
-    
+    print(f'{run_id}: {dataset} {executable}')    
     args = ['python', executable, 
             '--data', dataset,
             '--dloc', 'graph-homomorphism-network/data',

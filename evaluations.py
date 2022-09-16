@@ -6,7 +6,7 @@ import os
 # parameters to iterate over
 cwd = './'
 
-datasets = [ 'MUTAG', 'CSL', 'PAULUS25', 'BZR', 'IMDBBINARY', 'IMDBMULTI'] 
+datasets = ['MUTAG', 'CSL', 'PAULUS25', 'BZR', 'IMDBBINARY', 'IMDBMULTI', 'REDDIT-BINARY', 'NCI1', 'ENZYMES', 'DD', 'COLLAB']
 
 executables = ['graph-homomorphism-network/models/svm.py', 'graph-homomorphism-network/models/mlp.py']
 
