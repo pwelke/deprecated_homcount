@@ -2,6 +2,7 @@ import subprocess
 import itertools
 import sys
 import os
+import hashlib
 
 # parameters to iterate over
 cwd = './'
