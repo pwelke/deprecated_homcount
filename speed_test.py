@@ -15,7 +15,7 @@ run_ids = ['run1','run2','run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9',
 
 pattern_counts = [30, ] #10, 50, 100, 200]
 
-hom_types = {'tree+cycle': '6', 'tree+cycle': '7', 'tree+cycle': '8', 'tree+cycle': '10', 'random_ktree': '-1',}
+hom_types = {'tree+cycle': '6', 'random_ktree': '-1',}
 
 # a deterministic hash function returning a 32 bit integer value for a given utf-8 string
 hashfct = lambda x: str(int(hashlib.sha1(bytes(x, 'utf-8')).hexdigest(), 16) & 0xFFFFFFFF)
