@@ -4,20 +4,15 @@
 Ensure that you have python installed, cmake, and a recent c++ compiler available.
 Currently, java is also a dependency, but it is superfluous.
 
-## Clone Repos
+## Clone Repo
 
-1) Clone this repository somewhere
-2) Enter the repository.
-    1) Clone github.com/pwelke/HomSub.git
-    2) Clone github.com/pwelke/graph-homomorphism-network.git
-
+To run the code in this repository, clone it somewhere and initialize the git submodules
 ```
 git clone git@github.com:pwelke/homcount.git
 cd homcount
-git clone git@github.com:pwelke/HomSub.git
-git clone git@github.com:pwelke/graph-homomorphism-network.git
+git submodule init
+git submodule update
 ```
-
 
 ## Building HomSub
 
