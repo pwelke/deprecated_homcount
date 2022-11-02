@@ -1,0 +1,6 @@
+[submodule "graph-homomorphism-network"]
+	path = graph-homomorphism-network
+	url = git@github.com:pwelke/graph-homomorphism-network.git
+[submodule "HomSub"]
+	path = HomSub
+	url = git@github.com:pwelke/HomSub.git
