@@ -9,11 +9,11 @@ cwd = './'
 
 datasets = ['MUTAG', 'CSL', 'PAULUS25', 'BZR', 'IMDBBINARY', 'IMDBMULTI', 'REDDIT-BINARY', 'NCI1', 'ENZYMES', 'DD', 'COLLAB']
 
-executables = ['graph-homomorphism-network/models/svm_glued.py', ] #['graph-homomorphism-network/models/svm.py', 'graph-homomorphism-network/models/mlp.py'] 
+executables = ['graph-homomorphism-network/models/svm_glued.py', 'graph-homomorphism-network/models/svm.py', 'graph-homomorphism-network/models/mlp.py'] 
 
 run_ids = ['run1','run2','run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
 
-pattern_counts = [30, ] #10, 50, 100, 200]
+pattern_counts = [-3,] #[30, ] #10, 50, 100, 200]
 
 hom_types = ['random_ktree']
 
