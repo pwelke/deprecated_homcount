@@ -4,14 +4,15 @@ import sys
 import os
 import hashlib 
 
+
 # parameters to iterate over
 cwd = './'
 
-datasets = ['MUTAG', 'CSL', 'PAULUS25', 'BZR', 'IMDBBINARY', 'IMDBMULTI', 'REDDIT-BINARY', 'NCI1', 'ENZYMES', 'DD', 'COLLAB']
+datasets = ['ogbg-molsider'] #['MUTAG', 'CSL', 'PAULUS25', 'BZR', 'IMDBBINARY', 'IMDBMULTI', 'REDDIT-BINARY', 'NCI1', 'ENZYMES', 'DD', 'COLLAB']
 
-executables = ['graph-homomorphism-network/models/feature_extraction.py', ] #'graph-homomorphism-network/models/mlp.py', 'graph-homomorphism-network/models/svm.py']
+executables = ['graph-homomorphism-network/models/fabian_extraction.py', ] #'graph-homomorphism-network/models/mlp.py', 'graph-homomorphism-network/models/svm.py']
 
-run_ids = ['run1', 'run2','run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
+run_ids = ['run3', 'run2',] #'run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
 
 pattern_counts = [30, ] #10, 50, 100, 200]
 
