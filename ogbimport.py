@@ -31,7 +31,8 @@ def convert_from_ogb(dataset_name, save_path:str='graph-homomorphism-network/dat
     for split in ['train', 'valid', 'test']:
         for i, x in enumerate(split_idx[split]):
             metas[x]['split'] = split
-            metas[x]['idx'] = i
+            metas[x]['idx_in_split'] = i
+            metas[x]['idx'] = x
 
     with open(join(save_path, dataset_name.upper() + '.meta'), 'w') as f:
         json.dump(metas, f)    
