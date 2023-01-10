@@ -44,6 +44,7 @@ cd graph-homomorphism-network
 conda create -n expectation_complete python==3.7
 conda activate expectation_complete
 pip install -r requirements_dev.txt
+python setup.py install
 ```
 
 # Compute Embeddings and Evaluate Results
