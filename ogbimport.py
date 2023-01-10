@@ -43,7 +43,16 @@ def convert_from_ogb(dataset_name, save_path:str='graph-homomorphism-network/dat
     with open(join(save_path, dataset_name.upper()) + '.y', 'wb') as f:
         pickle.dump(np.zeros(len(graphs)), f)
 
+datasets = ['ogbg-moltox21',
+            'ogbg-molesol',
+            'ogbg-molbace',
+            'ogbg-molclintox',
+            'ogbg-molbbbp',
+            'ogbg-molsider',
+            'ogbg-moltoxcast',
+            'ogbg-mollipo',
+            'ogbg-molhiv',]
 
-dataset_name = "ogbg-molsider"
-convert_from_ogb(dataset_name)
+for dataset_name in datasets:
+    convert_from_ogb(dataset_name)
 

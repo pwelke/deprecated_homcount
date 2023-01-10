@@ -8,13 +8,21 @@ import hashlib
 # parameters to iterate over
 cwd = './'
 
-datasets = ['ogbg-molsider'] #['MUTAG', 'CSL', 'PAULUS25', 'BZR', 'IMDBBINARY', 'IMDBMULTI', 'REDDIT-BINARY', 'NCI1', 'ENZYMES', 'DD', 'COLLAB']
+datasets = ['ogbg-moltox21',
+            'ogbg-molesol',
+            'ogbg-molbace',
+            'ogbg-molclintox',
+            'ogbg-molbbbp',
+            'ogbg-molsider',
+            'ogbg-moltoxcast',
+            'ogbg-mollipo',
+            'ogbg-molhiv',]
 
-executables = ['graph-homomorphism-network/models/fabian_extraction.py', ] #'graph-homomorphism-network/models/mlp.py', 'graph-homomorphism-network/models/svm.py']
+executables = ['graph-homomorphism-network/models/fabian_extraction.py', ] 
 
-run_ids = ['run3', 'run2',] #'run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
+run_ids = ['il1', 'il2',] #'run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
 
-pattern_counts = [30, ] #10, 50, 100, 200]
+pattern_counts = [50, -5] 
 
 hom_types = ['random_ktree'] # 'product_graph_ktree_profile'
 
