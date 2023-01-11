@@ -1,7 +1,7 @@
 import sys
 sys.path.append('graph-homomorphism-network/src')
 from ghc.utils.data import load_precompute_patterns
-from ghc.generate_k_tree import get_pattern_list
+from ghc.generate_k_tree import get_pattern_list, get_small_patterns
 
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -20,7 +20,8 @@ import matplotlib.pyplot as plt
 
 # patterns = load_precompute_patterns(datasets[0], hom_types[0], hom_size, pattern_counts[0], run_ids[0], dloc)
 
-patterns, tree_decompositions = get_pattern_list(20, 20)
+# patterns, tree_decompositions = get_pattern_list(20, 20)
+patterns, _ = get_small_patterns()
 
 allpatterns = nx.disjoint_union_all(patterns)
 nx.draw(allpatterns, arrows=False, node_size=20)
