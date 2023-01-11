@@ -20,11 +20,11 @@ datasets = ['ogbg-moltox21',
 
 executables = ['graph-homomorphism-network/models/fabian_extraction.py', ] 
 
-run_ids = ['il1', 'il2',] #'run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
+run_ids = ['il3', 'il4',] #'run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
 
-pattern_counts = [50, -5] 
+pattern_counts = [50] 
 
-hom_types = ['random_ktree'] # 'product_graph_ktree_profile'
+hom_types = ['full_kernel']
 
 # a deterministic hash function returning a 32 bit integer value for a given utf-8 string
 hashfct = lambda x: str(int(hashlib.sha1(bytes(x, 'utf-8')).hexdigest(), 16) & 0xFFFFFFFF)
