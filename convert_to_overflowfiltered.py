@@ -5,25 +5,10 @@ import json
 import itertools
 import numpy as np
 
-datasets = ['ogbg-moltox21',
-            'ogbg-molesol',
-            'ogbg-molbace',
-            'ogbg-molclintox',
-            'ogbg-molbbbp',
-            'ogbg-molsider',
-            'ogbg-moltoxcast',
-            'ogbg-mollipo',
-            'ogbg-molhiv',]
+from pams import *
 
-run_ids = ['il3',]# 'il4',] #'run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
+dloc = 'graph-homomorphism-network/data/precompute/'
 
-pattern_counts = [50,] #[30, ] #10, 50, 100, 200]
-
-hom_types = ['full_kernel']
-
-hom_size = 'max'
-
-dloc = 'forFabian/2023-01-12_fixedreps_more/'
 
 def filter_overflow(patterns, sizes):
     minval = np.min(patterns, axis=0)

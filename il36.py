@@ -11,16 +11,7 @@ cwd = './'
 
 executables = ['graph-homomorphism-network/models/fabian_extraction.py', ] 
 
-datasets = ['ogbg-moltox21',
-            'ogbg-molesol',
-            'ogbg-molbace',
-            'ogbg-molclintox',
-            'ogbg-molbbbp',
-            'ogbg-molsider',
-            'ogbg-moltoxcast',
-            'ogbg-mollipo',
-            'ogbg-molhiv',
-            'ZINC_subset']
+datasets = ['ZINC_subset']
 
 # download and preprocess all datasets
 args = ['python', 'import_from_ogb.py']
