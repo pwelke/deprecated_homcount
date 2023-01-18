@@ -7,7 +7,19 @@ import numpy as np
 
 from pams import *
 
+# dloc = 'graph-homomorphism-network/data/precompute/'
 dloc = 'graph-homomorphism-network/data/precompute/'
+
+datasets = ['ogbg-moltox21',
+            'ogbg-molesol',
+            'ogbg-molbace',
+            'ogbg-molclintox',
+            'ogbg-molbbbp',
+            'ogbg-molsider',
+            'ogbg-moltoxcast',
+            'ogbg-mollipo',
+            'ogbg-molhiv',
+            'ZINC_subset']
 
 
 def filter_overflow(patterns, sizes):
