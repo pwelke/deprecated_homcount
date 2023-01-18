@@ -13,6 +13,8 @@ executables = ['graph-homomorphism-network/models/fabian_extraction.py', ]
 
 datasets = ['ogbg-molhiv',]
 
+pattern_counts = [-3] 
+
 # download and preprocess all datasets
 args = ['python', 'import_from_ogb.py']
 subprocess.run(args, cwd=cwd, stdout=sys.stdout, stderr=sys.stderr, check=True)
