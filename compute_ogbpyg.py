@@ -3,8 +3,7 @@ import itertools
 import sys
 import os
 import hashlib 
-
-from pams import *
+from convert_to_overflowfiltered import file_overflow_filter
 
 # parameters to iterate over
 cwd = './'
@@ -21,6 +20,15 @@ datasets = ['ogbg-moltox21',
             'ogbg-mollipo',
             'ogbg-molhiv',
             'ZINC_subset']
+
+run_ids = ['run1', 'run2','run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
+
+pattern_counts = [50] 
+
+hom_types = ['full_kernel']
+
+hom_size = 'max'
+
 
 # download and preprocess all datasets
 args = ['python', 'import_from_ogb.py']
@@ -47,5 +55,4 @@ for run_id, dataset, executable, pattern_count, hom_type in itertools.product(ru
     subprocess.run(args, cwd=cwd, stdout=sys.stdout, stderr=sys.stderr, check=True)
 
 # remove features with problems
-args = ['python', 'convert_to_overflowfiltered.py']
-subprocess.run(args, cwd=cwd, stdout=sys.stdout, stderr=sys.stderr, check=True)
+file_overflow_filter(run_ids, datasets, pattern_counts, hom_types)

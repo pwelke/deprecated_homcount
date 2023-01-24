@@ -5,22 +5,6 @@ import json
 import itertools
 import numpy as np
 
-from pams import *
-
-# dloc = 'graph-homomorphism-network/data/precompute/'
-dloc = 'graph-homomorphism-network/data/precompute/'
-
-datasets = ['ogbg-moltox21',
-            'ogbg-molesol',
-            'ogbg-molbace',
-            'ogbg-molclintox',
-            'ogbg-molbbbp',
-            'ogbg-molsider',
-            'ogbg-moltoxcast',
-            'ogbg-mollipo',
-            'ogbg-molhiv',
-            'ZINC_subset']
-
 
 def filter_overflow(patterns, sizes):
     minval = np.min(patterns, axis=0)
@@ -33,28 +17,55 @@ def filter_overflow(patterns, sizes):
         # if nothing worked, return zeros
         return np.zeros([patterns.shape[0], 1]), np.zeros(1)
 
-for run_id, dataset, pattern_count, hom_type in itertools.product(run_ids, datasets, pattern_counts, hom_types):
 
-    try:
+def file_overflow_filter(run_ids, datasets, pattern_counts, hom_types):
+    for run_id, dataset, pattern_count, hom_type in itertools.product(run_ids, datasets, pattern_counts, hom_types):
 
-        meta = load_json(dataset.upper(), hom_type, hom_size, pattern_count, run_id, dloc)
+        try:
+            meta = load_json(dataset.upper(), hom_type, hom_size, pattern_count, run_id, dloc)
 
-        pattern_sizes = np.array(meta['pattern_sizes'])
-        data = meta['data']
-        features = np.array([x['counts'] for x in data], dtype=float)
+            pattern_sizes = np.array(meta['pattern_sizes'])
+            data = meta['data']
+            features = np.array([x['counts'] for x in data], dtype=float)
 
-        size_before = pattern_sizes.shape[0]
+            size_before = pattern_sizes.shape[0]
 
-        features, pattern_sizes = filter_overflow(features, pattern_sizes)
+            features, pattern_sizes = filter_overflow(features, pattern_sizes)
 
-        size_after = pattern_sizes.shape[0]
+            size_after = pattern_sizes.shape[0]
 
-        meta['pattern_sizes'] = pattern_sizes.tolist()
-        for x, f in zip(data, features):
-            x['counts'] = f.tolist()
+            meta['pattern_sizes'] = pattern_sizes.tolist()
+            for x, f in zip(data, features):
+                x['counts'] = f.tolist()
 
-        print(f'{dataset} {size_before}->{size_after}, min={np.min(features)}')
+            print(f'{dataset} {size_before}->{size_after}, min={np.min(features)}')
 
-        save_json(meta, dataset.upper(), hom_type, hom_size, pattern_count, run_id, dloc, suffix='overflow_filtered')
-    except FileNotFoundError:
-        pass # we don't process whats not there
+            save_json(meta, dataset.upper(), hom_type, hom_size, pattern_count, run_id, dloc, suffix='overflow_filtered')
+        except FileNotFoundError:
+            pass
+
+
+if __name__ == '__main__':
+
+    run_ids = ['20230117']
+
+    pattern_counts = [-5] 
+
+    hom_types = ['full_kernel']
+
+    hom_size = 'max'
+
+    dloc = 'forFabian/2023-01-12_fixedreps_more/'
+
+    datasets = ['ogbg-moltox21',
+                'ogbg-molesol',
+                'ogbg-molbace',
+                'ogbg-molclintox',
+                'ogbg-molbbbp',
+                'ogbg-molsider',
+                'ogbg-moltoxcast',
+                'ogbg-mollipo',
+                'ogbg-molhiv',
+                'ZINC_subset']
+
+    file_overflow_filter(run_ids, datasets, pattern_counts, hom_types)
