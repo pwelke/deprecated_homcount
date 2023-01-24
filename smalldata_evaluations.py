@@ -9,13 +9,13 @@ cwd = './'
 
 datasets = ['MUTAG', 'CSL', 'PAULUS25', 'BZR', 'IMDBBINARY', 'IMDBMULTI', 'REDDIT-BINARY', 'NCI1', 'ENZYMES', 'DD', 'COLLAB']
 
-executables = ['graph-homomorphism-network/models/svm_glued.py', 'graph-homomorphism-network/models/svm.py', 'graph-homomorphism-network/models/mlp.py'] 
+executables = ['graph-homomorphism-network/models/svm.py', 'graph-homomorphism-network/models/mlp.py'] 
 
-run_ids = ['run1','run2','run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
+run_ids = ['run1', 'run2','run3', 'run4', 'run5', 'run6', 'run7', 'run8', 'run9', 'run10']
 
-pattern_counts = [-3,] #[30, ] #10, 50, 100, 200]
+pattern_counts = [50,]
 
-hom_types = ['random_ktree']
+hom_types = ['random_ktree'] # is actually min_kernel, but right now on existing data
 
 # a deterministic hash function returning a 32 bit integer value for a given utf-8 string
 hashfct = lambda x: str(int(hashlib.sha1(bytes(x, 'utf-8')).hexdigest(), 16) & 0xFFFFFFFF)
