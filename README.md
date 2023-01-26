@@ -1,11 +1,6 @@
 # Expectation Complete Graph Representations
 
-This repository contains the code to compute graph representations that are complete in expectation. If you use this code in your work or find it useful in any other way, please consider citing our paper:
-
-Pascal Welke*, Maximilian Thiessen*, and Thomas Gärtner: 
-[Expectation Complete Graph Representations Using Graph Homomorphisms.](https://openreview.net/forum?id=Zf-Mn6xzD2B)
-
-[presented at [GLFrontiers@NeurIPS2022](https://glfrontiers.github.io/)] [presented at [LOG2022](https://logconference.org/)]
+This repository contains the code to compute graph representations that are complete in expectation. If you use this code in your work or find it useful in any other way, please consider citing our paper.
 
 # Installation
 
