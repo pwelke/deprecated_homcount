@@ -1,6 +1,7 @@
 # Expectation Complete Graph Representations
 
-This repository contains the code to compute graph representations that are complete in expectation. If you use this code in your work or find it useful in any other way, please consider citing our paper.
+This repository contains the code to compute graph representations that are complete in expectation. 
+If you use this code in your work or find it useful in any other way, please consider accepting our paper :).
 
 # Installation
 
@@ -12,7 +13,7 @@ Currently, java is also a dependency, but it is superfluous.
 
 To run the code in this repository, clone it somewhere and initialize the git submodules
 ```
-git clone git@github.com:pwelke/homcount.git
+git clone git@anonymous.4open.science/r/HomCount_Counts_ICML_2023.git
 cd homcount
 git submodule init
 git submodule update
