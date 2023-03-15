@@ -33,7 +33,7 @@ def filter_singletons(patterns, sizes):
         return np.zeros([patterns.shape[0], 1]), np.zeros(1)
 
 
-def file_overflow_filter(run_ids, datasets, pattern_counts, hom_types):
+def file_overflow_filter(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc):
     for run_id, dataset, pattern_count, hom_type in itertools.product(run_ids, datasets, pattern_counts, hom_types):
 
         try:
@@ -60,7 +60,7 @@ def file_overflow_filter(run_ids, datasets, pattern_counts, hom_types):
             pass
 
 
-def file_singleton_filter(run_ids, datasets, pattern_counts, hom_types):
+def file_singleton_filter(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc):
     for run_id, dataset, pattern_count, hom_type in itertools.product(run_ids, datasets, pattern_counts, hom_types):
 
         try:
@@ -110,5 +110,5 @@ if __name__ == '__main__':
                 'ogbg-molhiv',
                 'ZINC_subset']
 
-    file_overflow_filter(run_ids, datasets, pattern_counts, hom_types)
-    file_singleton_filter(run_ids, datasets, pattern_counts, hom_types)
+    file_overflow_filter(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc)
+    file_singleton_filter(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc)

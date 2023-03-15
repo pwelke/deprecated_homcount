@@ -6,6 +6,8 @@ import hashlib
 
 # parameters to iterate over
 cwd = './'
+dloc = 'graph-homomorphism-network/data/'
+
 
 datasets = ['MUTAG', 'CSL', 'PAULUS25', 'BZR', 'IMDBBINARY', 'IMDBMULTI', 'REDDIT-BINARY', 'NCI1', 'ENZYMES', 'DD', 'COLLAB']
 
@@ -26,7 +28,7 @@ for run_id, dataset, executable, pattern_count, hom_type in itertools.product(ru
     args = ['python', executable, 
             '--data', dataset,
             '--seed', hashfct(run_id),
-            '--dloc', 'graph-homomorphism-network/data',
+            '--dloc', dloc,
             '--pattern_count', str(pattern_count),
             '--run_id', run_id,
             '--hom_type', hom_type,
@@ -34,3 +36,6 @@ for run_id, dataset, executable, pattern_count, hom_type in itertools.product(ru
             '--grid_search',
             ]
     subprocess.run(args, cwd=cwd, stdout=sys.stdout, stderr=sys.stderr, check=True)
+
+file_overflow_filter(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc + 'precompute')
+file_singleton_filter(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc + 'precompute')

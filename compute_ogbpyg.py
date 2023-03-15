@@ -3,7 +3,7 @@ import itertools
 import sys
 import os
 import hashlib 
-from convert_to_overflowfiltered import file_overflow_filter
+from convert_to_overflowfiltered import file_overflow_filter, file_singleton_filter
 
 # parameters to iterate over
 cwd = './'
@@ -28,6 +28,7 @@ pattern_counts = [50]
 hom_types = ['full_kernel']
 
 hom_size = 'max'
+dloc = 'graph-homomorphism-network/data/'
 
 
 # download and preprocess all datasets
@@ -45,7 +46,7 @@ for run_id, dataset, executable, pattern_count, hom_type in itertools.product(ru
     args = ['python', executable, 
             '--data', dataset,
             '--seed', hashfct(run_id),
-            '--dloc', 'graph-homomorphism-network/data',
+            '--dloc', dloc,
             '--pattern_count', str(pattern_count),
             '--run_id', run_id,
             '--hom_type', hom_type,
@@ -55,4 +56,6 @@ for run_id, dataset, executable, pattern_count, hom_type in itertools.product(ru
     subprocess.run(args, cwd=cwd, stdout=sys.stdout, stderr=sys.stderr, check=True)
 
 # remove features with problems
-file_overflow_filter(run_ids, datasets, pattern_counts, hom_types)
+file_overflow_filter(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc + 'precompute')
+file_singleton_filter(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc + 'precompute')
+

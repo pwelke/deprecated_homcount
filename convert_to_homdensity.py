@@ -5,7 +5,7 @@ import json
 import itertools
 
 
-def file_homdensity_filter(run_ids, datasets, pattern_counts, hom_types):
+def file_homdensity_filter(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc):
 
     for run_id, dataset, pattern_count, hom_type in itertools.product(run_ids, datasets, pattern_counts, hom_types):
 
@@ -47,4 +47,4 @@ if __name__ == "__main__":
 
     dloc = 'forFabian/2023-01-12_fixedreps/'
 
-    file_homdensity_filter(run_ids, datasets, pattern_counts, hom_types)
+    file_homdensity_filter(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc)
