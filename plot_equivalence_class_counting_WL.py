@@ -5,10 +5,9 @@ import json
 import itertools
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib as mpl
 import pandas as pd
 
-def file_equivalence_plot(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc):
+def file_equivalence_plot_WL(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc):
 
     results = pd.DataFrame(columns=['run_id', 
                             'dataset',
@@ -21,14 +20,14 @@ def file_equivalence_plot(run_ids, datasets, pattern_counts, hom_types, hom_size
     for run_id, dataset, pattern_count, hom_type in itertools.product(run_ids, datasets, pattern_counts, hom_types):
 
         try:
-            meta = load_json(dataset.upper(), hom_type, hom_size, pattern_count, run_id, dloc, suffix='singleton_filtered')
+            meta = load_json(dataset.upper(), hom_type, hom_size, pattern_count, run_id, dloc, suffix='homson')
 
             pattern_sizes = np.array(meta['pattern_sizes'])
             data = meta['data']
             features = np.array([x['counts'] for x in data], dtype=float)
 
-            equivalence_classes = [np.unique(features[:,:i], axis=0).shape[0] for i in range(len(pattern_sizes))]
-            print(len(equivalence_classes))
+            equivalence_classes = np.unique(features, axis=0).shape[0]
+            
             # results.append({'run_id': run_id, 
             #                 'dataset': dataset,
             #                 'pattern_count': pattern_count,
@@ -36,7 +35,7 @@ def file_equivalence_plot(run_ids, datasets, pattern_counts, hom_types, hom_size
             #                 'equivalence_classes': tuple(np.array(equivalence_classes)), 
             #                 'n_patterns': pattern_sizes.shape[0],
             #                 'n_examples': features.shape[0]})
-            results = pd.concat([results, pd.DataFrame([[run_id, dataset, pattern_count, hom_type, [np.array(equivalence_classes)], pattern_sizes.shape[0], features.shape[0]]], columns=results.columns)], ignore_index=True)
+            results = pd.concat([results, pd.DataFrame([[run_id, dataset, pattern_count, hom_type, equivalence_classes, pattern_sizes.shape[0], features.shape[0]]], columns=results.columns)], ignore_index=True)
 
         except FileNotFoundError:
             pass
@@ -64,11 +63,11 @@ def std_different_length_array(list_of_arrays, new_len=54, pad_value=-1):
 if __name__ == '__main__':
 
     # choose input data
-    run_ids = ['run' + str(i+1) for i in range(9)]
-    pattern_counts = [50] 
-    hom_types = ['full_kernel']
+    run_ids = ['run1']
+    pattern_counts = [1,2,3,4,5] 
+    hom_types = ['wl_kernel']
     hom_size = 'max'
-    dloc = '2023-03-07_ogbpyg_repetition/repeated_runs/'
+    dloc = 'graph-homomorphism-network/data/precompute/'
 
     datasets = ['ogbg-moltox21',
                 'ogbg-molesol',
@@ -84,13 +83,12 @@ if __name__ == '__main__':
 
 
     # compute number of equivalence classes after each pattern for each dataset
-    df = file_equivalence_plot(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc)
+    df = file_equivalence_plot_WL(run_ids, datasets, pattern_counts, hom_types, hom_size, dloc)
 
     # aggregation magic
-    agg = df.groupby(['dataset','pattern_count','hom_type', 'n_examples'], sort=True).agg(mean=('equivalence_classes', mean_different_length_array), std=('equivalence_classes', std_different_length_array))
+    agg = df.groupby(['dataset', 'hom_type', 'n_examples', 'run_id'], )
 
     # plotting
-
     colormapping = {
         'ogbg-moltox21':    'tab:blue',
         'ogbg-molesol':    'tab:orange',
@@ -105,17 +103,16 @@ if __name__ == '__main__':
 
 
     plt.figure(figsize=[6,6], dpi=300)
-    plt.set_cmap('tab10')
-    for idx,tpl in agg.iterrows():
-        plt.plot(np.arange(54) + 1, tpl['mean'] / idx[3], label=idx[0], color=colormapping[idx[0]])
-    plt.xlabel('Number of Patterns')
+    for idx,tpl in agg:
+        # print(idx, tpl)
+        plt.plot(tpl['pattern_count'], tpl['equivalence_classes'] / tpl['n_examples'], label=idx[0], color=colormapping[idx[0]])
+    plt.xlabel('Weisfeiler Leman Iteration')
     plt.ylabel('Equivalence Classes / Number of Examples')
     plt.legend()
-    plt.xlim([0,50])
+    plt.xlim([0,6])
     plt.ylim([0,1])
-    plt.savefig(dloc + 'equivalence_class_counting.pdf')
-    plt.savefig(dloc + 'equivalence_class_counting.png')
-
+    plt.savefig(dloc + 'equivalence_class_counting_WL.pdf')
+    plt.savefig(dloc + 'equivalence_class_counting_WL.png')
     plt.show()
 
 
